@@ -33,9 +33,9 @@ class WurmBot:
         print(f"Recipe {self.recipe.name} loaded successfully!")
         return True
             
-    def run(self):
+    def run(self, iterations):
         time.sleep(5)
-        for i in range(10 * len(self.recipe.steps)):
+        for i in range(iterations * len(self.recipe.steps)):
             step = self.recipe.next()
             if step.action:
                 print("Performing:", step.action, "(", step.params, ")")

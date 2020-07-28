@@ -19,6 +19,7 @@ class WurmBot:
         with open(f"config/ui.yml", "r") as stream:
             self.config = yaml.safe_load(stream)
         self.frame = None
+        self.verbose = False
         return
 
     def load(self, recipe):
@@ -30,16 +31,16 @@ class WurmBot:
         print(f"Recipe {self.recipe.name} loaded successfully!")
         return True
 
-    def run(self, iterations):
+    def run(self, iterations, verbose=False):
+        self.verbose = verbose
         time.sleep(5)
         for i in range(iterations * len(self.recipe.steps)):
             step = self.recipe.next()
+            self._print_step(step)
             if step.action:
-                print("Performing:", step.action, "(", step.params, ")")
                 self.act(step.action, step.params)
                 time.sleep(1)
             elif step.wait:
-                print("Waiting on:", step.wait, "-", f"{step.timeout}s timeout")
                 self.wait(step.wait, step.timeout)
 
             time.sleep(0.1)
@@ -113,3 +114,13 @@ class WurmBot:
     def _update_frame(self):
         self.frame = pag.screenshot(region=(0, 0, 1920, 1080))
         return True
+
+    def _print_step(self, step):
+        print(">", step.name)
+        if self.verbose:
+            print("  - action", step.action)
+            print("  - params:", step.params)
+            print("  - wait:", step.wait)
+            print("  - timeout:" f"{step.timeout}s")
+
+        return

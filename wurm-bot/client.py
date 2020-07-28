@@ -56,6 +56,7 @@ class WurmBot:
         
         done = False
         while done == False:
+            self._update_frame()
             results = []
             for condition in conditions:
                 if timeout and (time.time() - started) > timeout:
@@ -82,27 +83,27 @@ class WurmBot:
     def _is_rested(self):
         pos = tuple(self.config['rested']['pos'])
         color = self._get_rgb(self.config['rested']['color'])
-        
-        return pag.pixelMatchesColor(pos[0], pos[1], color)
+        pixel = self.frame.getpixel(pos)
+        return pixel == color
 
     def _is_fatigued(self):
         pos = tuple(self.config['fatigued']['pos'])
         color = self._get_rgb(self.config['fatigued']['color'])
-        
-        return pag.pixelMatchesColor(pos[0], pos[1], color)
+        pixel = self.frame.getpixel(pos)
+        return pixel == color
 
     def _is_idle(self):
         pos = tuple(self.config['idle']['pos'])
         color = self._get_rgb(self.config['idle']['color'])
-        
-        return pag.pixelMatchesColor(pos[0], pos[1], color)
+        pixel = self.frame.getpixel(pos)
+        return pixel == color
 
     def _is_busy(self):
         pos = tuple(self.config['busy']['pos'])
         color = self._get_rgb(self.config['busy']['color'])
-        
+        pixel = self.frame.getpixel(pos)
 
-        return pag.pixelMatchesColor(pos[0], pos[1], color)
+        return pixel == color
 
     def _get_rgb(self, rgbInt):
         blue =  rgbInt & 255

@@ -1,6 +1,7 @@
 from client import WurmBot
 import sys
 
+
 def main(args: list) -> int:
     bot = WurmBot()
 

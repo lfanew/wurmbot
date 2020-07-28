@@ -1,12 +1,12 @@
 # WurmBot
 
-### Color botting made easy for Wurm
+## Color botting made easy for Wurm
 
-#### About
+### About
 
 This project aims to make it easy for users to automate tasks in Wurm (Online & Unlimited). Users create Recipes that the bot loads and executes for you. Since Recipes are just YAML files they make it easy for users to pick up and learn.
 
-#### Setup
+### Setup
 
 1. Installing Dependencies
     * `pip install -r requirements.txt`
@@ -22,11 +22,11 @@ This project aims to make it easy for users to automate tasks in Wurm (Online & 
         * Idle - Top left dark pixel in action bar
         * Busy - Top left blue pixel in action bar
 
-#### Example
+### Example
 Open a terminal in the folder where `client.py` is located. You can run a recipe like so:
 
-```python wurmbot.py mine 10```
+```python wurmbot.py MineBuddy 10```
 
-The above command runs the mine recipe 10 times before stopping. The general syntax for running WurmBot is
+The above command runs the MineBuddy Recipe 10 times before stopping. The general syntax for running WurmBot is
 
 ```python wurmbot.py <RECIPE_WITHOUT_EXTENSION> <ITERATIONS>```

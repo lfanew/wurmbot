@@ -1,4 +1,4 @@
-# WurmBut
+# WurmBot
 
 ### Color botting made easy for Wurm
 

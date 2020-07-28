@@ -18,7 +18,6 @@ class WurmBot:
         print("Loading configs...")
         with open(f"config/ui.yml", "r") as stream:
             self.config = yaml.safe_load(stream)
-        print("Loaded configs successfully!")
         self.frame = None
         return
 

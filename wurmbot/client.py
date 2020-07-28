@@ -114,7 +114,7 @@ class WurmBot:
     def _update_frame(self):
         self.frame = pag.screenshot(region=(0, 0, 1920, 1080))
         return True
-    
+
     def _print_step(self, step):
         print(">", step.name)
         if self.verbose:

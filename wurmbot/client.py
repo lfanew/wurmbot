@@ -34,12 +34,11 @@ class WurmBot:
         time.sleep(5)
         for i in range(iterations * len(self.recipe.steps)):
             step = self.recipe.next()
+            print(">", step.name)
             if step.action:
-                print("Performing:", step.action, "(", step.params, ")")
                 self.act(step.action, step.params)
                 time.sleep(1)
             elif step.wait:
-                print("Waiting on:", step.wait, "-", f"{step.timeout}s timeout")
                 self.wait(step.wait, step.timeout)
 
             time.sleep(0.1)

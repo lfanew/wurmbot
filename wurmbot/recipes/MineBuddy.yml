@@ -1,8 +1,8 @@
-# Simple Miner v1
+# MineBuddy v1
 # Mining recipe by Tyler (lfanew)
 # https://github.com/lfanew
 ---
-Simple Miner:
+MineBuddy:
   # Target tile:
   #   action: click
   #   params:

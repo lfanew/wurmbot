@@ -7,6 +7,8 @@ def main(args: list) -> int:
     game_window = pgw.getWindowsWithTitle('Wurm Online')[0]
 
     game_window.activate()
+    
+    # x=-7 to adjust for Windows 10 border
     game_window.moveTo(-7,0)
 
     bot = WurmBot()

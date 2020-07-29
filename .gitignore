@@ -139,3 +139,4 @@ cython_debug/
 .vscode/settings.json
 wurm-bot/test_run.py
 wurm-bot/test_load.py
+wurmbot/.vscode/settings.json

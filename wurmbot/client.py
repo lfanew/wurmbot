@@ -3,7 +3,7 @@ import Recipe as rcp
 import pyautogui as pag
 import keyboard as kb
 import time
-
+import random
 
 class WurmBot:
     def __init__(self):
@@ -68,8 +68,13 @@ class WurmBot:
         return True
 
     def _click(self, params):
+        dX = random.randint(-5, 5)
+        dY = random.randint(-5, 5)
         for i in range(0, len(params), 2):
-            pag.click(params[i], params[i + 1])
+            x = params[i] + dX
+            y = params[i+1] + dY
+            pag.moveTo(x, y, duration=0.3)
+            pag.click()
 
         return True
 

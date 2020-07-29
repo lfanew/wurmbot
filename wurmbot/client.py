@@ -38,7 +38,7 @@ class WurmBot:
             step = self.recipe.next()
             self._print_step(step)
             if step.action:
-                self.act(step.action, step.params)
+                self.act(step.action, step.params, step.until)
                 time.sleep(1)
             elif step.wait:
                 self.wait(step.wait, step.timeout)
@@ -46,11 +46,25 @@ class WurmBot:
             time.sleep(0.1)
         return True
 
-    def act(self, action, params):
-        return self.actions[action](params)
+    def act(self, action, params, until):
+        if until:
+            done = False
+            while done == False:
+                self._update_frame()
+                results = []
+                for condition in until:
+                    results.append(self.waits[condition]())
+                if False in results:
+                    self.actions[action](params)
+                    time.sleep(0.5)
+                else:
+                    done = True
+        else:
+            return self.actions[action](params)
 
-    def wait(self, conditions, timeout):
-        started = time.time()
+    def wait(self, conditions, timeout=None):
+        if timeout:
+            started = time.time()
 
         done = False
         while done == False:

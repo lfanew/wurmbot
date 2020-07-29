@@ -44,3 +44,4 @@ class Step:
         self.params = data.get("params")
         self.wait = data.get("wait")
         self.timeout = data.get("timeout")
+        self.until = data.get("until")

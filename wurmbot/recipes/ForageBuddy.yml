@@ -12,7 +12,9 @@
       params:
         - 'g'
       until:
-        - busy
+        conditions:
+          - busy
+        interval: 0.1
     Stop walking:
       action: press
       params:

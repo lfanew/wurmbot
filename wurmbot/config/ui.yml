@@ -12,7 +12,7 @@ idle:
   pos: 
     - 1081
     - 907
-  color: 0x232321
+  color: 0x232421
 busy: 
   pos: 
     - 1081

@@ -48,15 +48,16 @@ class WurmBot:
 
     def act(self, action, params, until):
         if until:
+            interval = until.get('interval', 0.1)
             done = False
             while done == False:
                 self._update_frame()
                 results = []
-                for condition in until:
+                for condition in until['conditions']:
                     results.append(self.waits[condition]())
                 if False in results:
                     self.actions[action](params)
-                    time.sleep(0.5)
+                    time.sleep(interval)
                 else:
                     done = True
         else:

@@ -6,6 +6,7 @@ import time
 import random
 import colormath
 
+
 class WurmBot:
     def __init__(self):
         self.actions = {"click": self._click, "press": self._press}
@@ -49,12 +50,12 @@ class WurmBot:
 
     def act(self, action, params, until):
         if until:
-            interval = until.get('interval', 0.1)
+            interval = until.get("interval", 0.1)
             done = False
             while not done:
                 self._update_frame()
                 results = []
-                for condition in until['conditions']:
+                for condition in until["conditions"]:
                     results.append(self.waits[condition]())
                 if False in results:
                     self.actions[action](params)
@@ -88,7 +89,7 @@ class WurmBot:
         dY = random.randint(-5, 5)
         for i in range(0, len(params), 2):
             x = params[i] + dX
-            y = params[i+1] + dY
+            y = params[i + 1] + dY
             pag.moveTo(x, y, duration=0.3)
             pag.click()
 
@@ -135,7 +136,7 @@ class WurmBot:
 
     def _color_matches(self, color1, color2, tolerance=10):
         for i in range(3):
-            if abs(color1[i]-color2[i]) > tolerance:
+            if abs(color1[i] - color2[i]) > tolerance:
                 return False
         return True
 

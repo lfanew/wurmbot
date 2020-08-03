@@ -1,20 +1,20 @@
 rested: 
   pos: 
-    - 215
-    - 64
-  color: 0xA7C04F
+    - 176
+    - 58
+  color: 0x9FBE40
 fatigued: 
   pos: 
-    - 8
+    - 7
     - 64
-  color: 0x1A1611
+  color: 0x211C17
 idle: 
   pos: 
-    - 1083
-    - 901
-  color: 0x262725
+    - 1081
+    - 907
+  color: 0x232421
 busy: 
   pos: 
-    - 1083
-    - 901
-  color: 0x8CB9D0
+    - 1081
+    - 907
+  color: 0x6C90A3

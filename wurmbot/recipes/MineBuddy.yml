@@ -12,9 +12,10 @@ MineBuddy:
     action: press
     params:
       - '3'
-    wait:
-      - busy
-    timeout: 5
+    until:
+      conditions:
+        - busy
+      interval: 2
   Wait until idle:
     wait:
       - idle

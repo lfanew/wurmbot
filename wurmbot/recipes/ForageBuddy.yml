@@ -3,14 +3,29 @@
 # https://github.com/lfanew
 ---
   ForageBuddy:
+    Start walking:
+      action: press
+      params:
+        - 'x'
     Attempt to forage:
       action: press
       params:
         - 'g'
-      wait:
-        - busy
+      until:
+        conditions:
+          - busy
+        interval: 0.3
+    Stop walking:
+      action: press
+      params:
+        - 'x'
+        - 'z'
     Wait until idle:
       wait:
         - idle
       timeout: 30
+    Disable climbing:
+      action: press
+      params:
+        - 'z'
   

@@ -19,8 +19,13 @@
       action: press
       params:
         - 'x'
+        - 'z'
     Wait until idle:
       wait:
         - idle
       timeout: 30
+    Disable climbing:
+      action: press
+      params:
+        - 'z'
   

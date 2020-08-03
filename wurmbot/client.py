@@ -4,6 +4,7 @@ import pyautogui as pag
 import keyboard as kb
 import time
 import random
+import colormath
 
 class WurmBot:
     def __init__(self):
@@ -50,7 +51,7 @@ class WurmBot:
         if until:
             interval = until.get('interval', 0.1)
             done = False
-            while done == False:
+            while not done:
                 self._update_frame()
                 results = []
                 for condition in until['conditions']:
@@ -68,7 +69,7 @@ class WurmBot:
             started = time.time()
 
         done = False
-        while done == False:
+        while not done:
             self._update_frame()
             results = []
             for condition in conditions:
@@ -103,26 +104,27 @@ class WurmBot:
         pos = tuple(self.config["rested"]["pos"])
         color = self._get_rgb(self.config["rested"]["color"])
         pixel = self.frame.getpixel(pos)
-        return pixel == color
+        return self._color_matches(pixel, color)
 
     def _is_fatigued(self):
         pos = tuple(self.config["fatigued"]["pos"])
         color = self._get_rgb(self.config["fatigued"]["color"])
         pixel = self.frame.getpixel(pos)
-        return pixel == color
+        return self._color_matches(pixel, color)
 
     def _is_idle(self):
         pos = tuple(self.config["idle"]["pos"])
         color = self._get_rgb(self.config["idle"]["color"])
         pixel = self.frame.getpixel(pos)
-        return pixel == color
+
+        return self._color_matches(pixel, color)
 
     def _is_busy(self):
         pos = tuple(self.config["busy"]["pos"])
         color = self._get_rgb(self.config["busy"]["color"])
         pixel = self.frame.getpixel(pos)
 
-        return pixel == color
+        return self._color_matches(pixel, color)
 
     def _get_rgb(self, rgbInt):
         blue = rgbInt & 255
@@ -130,6 +132,12 @@ class WurmBot:
         red = (rgbInt >> 16) & 255
 
         return red, green, blue
+
+    def _color_matches(self, color1, color2, tolerance=10):
+        for i in range(3):
+            if abs(color1[i]-color2[i]) > tolerance:
+                return False
+        return True
 
     def _update_frame(self):
         self.frame = pag.screenshot(region=(0, 0, 1920, 1080))

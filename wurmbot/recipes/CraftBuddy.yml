@@ -6,10 +6,12 @@
     Start crafting:
       action: click
       params:
-        - 475
-        - 530
-      wait:
-        - busy
+        - 440
+        - 473
+      until:
+        conditions:
+          - busy
+        interval: 2
     Wait until idle and rested:
       wait:
         - idle
